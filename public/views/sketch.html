@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <style>
+        /* .top-bar {
+            display: flex;
+            flex-direction: row;
+            background-color: #3af;
+            border-bottom: 2px solid black;
+            position: absolute;
+            width: 100%;
+        }
+
+        .top-bar * {
+            margin: 5px 10px;
+        } */
+        .drawing-pad{
+            position: relative;
+        }
+        .drawing-pad-body{
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+        }
+
+        #settings { display: block; text-align:center}
+        #paint {
+            border: 1px solid black;
+            background : #ffffff;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width:100%;
+            height:300px;
+        }
+        #settings .color{
+            border: 3px solid #e6e6e6; 
+            padding: 10px;
+            border-radius: 50px;
+        }
+        #settings .color.black{
+            background:#000; 
+        }
+        #settings .color.red{
+            background: #d81818; 
+        }
+        #settings .color.blue{
+            background:#135bc7 ; 
+        }
+        #settings .color.green{
+            background:#4ead36; 
+        }
+        #settings .color.white{
+            background:white; 
+        }
+        #settings .size{
+            border: 0;
+            background: #000;
+            margin-left: 5px;
+            border-radius: 50px;
+        }
+        #settings .size.small{
+            padding: 3px;
+        }
+        #settings .size.medium{
+            padding: 5px;
+        }
+        #settings .size.large{
+            padding: 7px;
+        }
+        #settings .size.xlarge{
+            padding: 11px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 col-md-8 mx-auto col-sm-10 col-12">
+                <div class="card shadow mt-5 p-4">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <div class="float-left">
+                                <h4 class="card-title text-bold mb-4">Sketch It</h4>
+                                
+                            </div>
+                            <div class="float-right">
+                                <h4 class="card-title timer text-bold mb-4">2:00</h4>
+                                
+                            </div>
+                        </div>
+                        <div id="sketch">
+                            <canvas id="paint"></canvas>
+                        </div>
+                        <div class="clearfix mt-2">
+                            <div class="float-left">
+                                <div id="settings">
+                                    <button onclick="getColor('#000');" class="color black"></button>
+                                    <button onclick="getColor('#135bc7');" class="color blue"></button>
+                                    <button onclick="getColor('#d81818');" class="color red"></button>
+                                    <button onclick="getColor('#4ead36');" class="color green"></button>
+                                    <button onclick="getColor('#fff');"  class="color white"></button>
+                                </div>
+                                
+                            </div>
+                            <div class="float-right">
+                                <div id="settings">
+                                    <button onclick="getSize('2');" class="size small"></button>
+                                    <button onclick="getSize('5');" class="size medium"></button>
+                                    <button onclick="getSize('10');" class="size large"></button>
+                                    <button onclick="getSize('20');" class="size xlarge"></button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                 
+                        <h4 class="card-title text-bold m-3 text-center">House</h4>
+                        <div class="form-group mt-2">
+                            <button class="btn btn-standard btn-block btn-done">Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="/js/jquery.drawr.combined-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/draw.js"></script>
+    <script src="/js/sketch.js"></script>
+  </body>
+</html>
