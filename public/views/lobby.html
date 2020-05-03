@@ -19,35 +19,8 @@
                 <div class="card shadow mt-5 p-4">
                     <div class="card-body">
                         <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="text-bold">ctnieva</td>
-                                    <td class="text-right">
-                                        <span class="badge badge-pill badge-success">Online</span>
-                                        <span class="badge badge-pill badge-success">Ready</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold">jdtolentino</td>
-                                    <td class="text-right">
-                                        <span class="badge badge-pill badge-success">Online</span>
-                                        <span class="badge badge-pill badge-danger">Not Ready</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold">jmespinoza</td>
-                                    <td class="text-right">
-                                        <span class="badge badge-pill badge-success">Online</span>
-                                        <span class="badge badge-pill badge-danger">Not Ready</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold">klgapuz</td>
-                                    <td class="text-right">
-                                        <span class="badge badge-pill badge-danger">Offline</span>
-                                        <span class="badge badge-pill badge-danger">Not Ready</span>
-                                    </td>
-                                </tr>
+                            <tbody id="allPlayers">
+                                
                             </tbody>
                         </table>
                         <div class="form-group mt-5">
@@ -67,5 +40,44 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            var socket = io();
+            getAllPlayers();
+
+            socket.on('new logged in', function (data) {
+                console.log("new logged in", data);
+                getAllPlayers();
+            });
+
+            socket.on('new logged out', function (data) {
+                console.log("new logged in", data);
+                getAllPlayers();
+            });
+            
+        })
+
+        function getAllPlayers() {
+            $.get('/allPlayers')
+                .done(data => {
+                    let content = '';
+                    console.log(data);
+                    let {players} = data;
+                    for(let player of players) {
+                        let badgeOnlineClass = player.online == 'true' ? 'success' : 'danger';
+                        let onlineStatus = player.online == 'true' ? 'Online' : 'Offline';
+
+                        content += `<tr>
+                                    <td class="text-bold">${player.username}</td>
+                                    <td class="text-right">
+                                        <span class="badge badge-pill badge-${badgeOnlineClass}">${onlineStatus}</span>
+                                        <span class="badge badge-pill badge-danger">Not Ready</span>
+                                    </td>
+                                </tr>`;
+                    }
+                    $('#allPlayers').html(content);
+                })
+        }
+    </script>
   </body>
 </html>
