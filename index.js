@@ -50,6 +50,10 @@ io.on("connection", (socket) => {
     socket.on("typing", (msg) => {
         console.log("typing", msg);
     });
+
+    socket.on("send image", data => {
+        socket.broadcast.emit("show image", data);
+    })
 });
 
 http.listen(3000, () => {
