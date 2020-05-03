@@ -1,0 +1,31 @@
+body{
+    background:linear-gradient(120deg, #1C3A6C, #095daf) no-repeat  fixed;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+}
+
+.text-bold{
+    font-weight: 800;
+}
+
+.form-login .form-group label{
+    font-size: .7rem;
+    font-weight: 700;
+    color: #acacac;
+}
+.form-login .form-group .form-control{
+    font-size: .8rem;
+    padding: 25px 20px;
+    background: #eaeaed;
+    border: 0;
+}
+.form-login .form-group .btn-login{
+    background: #fbed24;
+    font-weight: 800;
+    padding: 10px 20px;
+}
+.btn-standard{
+    background: #fbed24;
+    font-weight: 800;
+    padding: 10px 20px;
+}

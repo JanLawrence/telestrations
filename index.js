@@ -7,7 +7,7 @@ var io = require("socket.io")(http);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/public/views/index.html");
+    res.sendFile(__dirname + "/public/views/login.html");
 });
 
 let numUsers = 0;
