@@ -4,7 +4,7 @@
     "description": "node socket.io telestration app",
     "dependencies": {
         "express": "^4.15.2",
-        "socket.io": "^2.3.0"
+        "socket.io": "^2.5.0"
     },
     "scripts":{
         "nmon": "nodemon index.js"
